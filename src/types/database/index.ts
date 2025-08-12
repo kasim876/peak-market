@@ -11,15 +11,15 @@ export type Database = {
       categories: {
         Row: {
           id: string;
-          name: string;
+          name: string | null;
         };
         Insert: {
           id?: string;
-          name?: string;
+          name?: string | null;
         };
         Update: {
           id?: string;
-          name?: string;
+          name?: string | null;
         };
         Relationships: [];
       };
@@ -29,6 +29,7 @@ export type Database = {
           created_at: string;
           description: string;
           id: string;
+          image_url: string | null;
           price: number;
           title: string;
           user_id: string;
@@ -36,10 +37,11 @@ export type Database = {
         Insert: {
           category_id?: string;
           created_at?: string;
-          description?: string;
+          description: string;
           id?: string;
-          price?: number;
-          title?: string;
+          image_url?: string | null;
+          price: number;
+          title: string;
           user_id?: string;
         };
         Update: {
@@ -47,6 +49,7 @@ export type Database = {
           created_at?: string;
           description?: string;
           id?: string;
+          image_url?: string | null;
           price?: number;
           title?: string;
           user_id?: string;
@@ -70,7 +73,7 @@ export type Database = {
       };
       users: {
         Row: {
-          avatar_url: string;
+          avatar_url: string | null;
           created_at: string;
           email: string;
           id: string;
@@ -80,17 +83,17 @@ export type Database = {
           surname: string;
         };
         Insert: {
-          avatar_url?: string;
+          avatar_url?: string | null;
           created_at?: string;
-          email?: string;
+          email: string;
           id?: string;
-          name?: string;
-          password_hash?: string;
-          phone?: string;
-          surname?: string;
+          name: string;
+          password_hash: string;
+          phone: string;
+          surname: string;
         };
         Update: {
-          avatar_url?: string;
+          avatar_url?: string | null;
           created_at?: string;
           email?: string;
           id?: string;
