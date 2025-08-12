@@ -11,45 +11,45 @@ export type Database = {
       categories: {
         Row: {
           id: string;
-          name: string | null;
+          name: string;
         };
         Insert: {
           id?: string;
-          name?: string | null;
+          name?: string;
         };
         Update: {
           id?: string;
-          name?: string | null;
+          name?: string;
         };
         Relationships: [];
       };
       products: {
         Row: {
-          category_id: string | null;
+          category_id: string;
           created_at: string;
-          description: string | null;
+          description: string;
           id: string;
-          price: number | null;
-          title: string | null;
-          user_id: string | null;
+          price: number;
+          title: string;
+          user_id: string;
         };
         Insert: {
-          category_id?: string | null;
+          category_id?: string;
           created_at?: string;
-          description?: string | null;
+          description?: string;
           id?: string;
-          price?: number | null;
-          title?: string | null;
-          user_id?: string | null;
+          price?: number;
+          title?: string;
+          user_id?: string;
         };
         Update: {
-          category_id?: string | null;
+          category_id?: string;
           created_at?: string;
-          description?: string | null;
+          description?: string;
           id?: string;
-          price?: number | null;
-          title?: string | null;
-          user_id?: string | null;
+          price?: number;
+          title?: string;
+          user_id?: string;
         };
         Relationships: [
           {
@@ -70,34 +70,34 @@ export type Database = {
       };
       users: {
         Row: {
-          avatar_url: string | null;
+          avatar_url: string;
           created_at: string;
-          email: string | null;
+          email: string;
           id: string;
-          name: string | null;
-          password_hash: string | null;
-          phone: string | null;
-          surname: string | null;
+          name: string;
+          password_hash: string;
+          phone: string;
+          surname: string;
         };
         Insert: {
-          avatar_url?: string | null;
+          avatar_url?: string;
           created_at?: string;
-          email?: string | null;
+          email?: string;
           id?: string;
-          name?: string | null;
-          password_hash?: string | null;
-          phone?: string | null;
-          surname?: string | null;
+          name?: string;
+          password_hash?: string;
+          phone?: string;
+          surname?: string;
         };
         Update: {
-          avatar_url?: string | null;
+          avatar_url?: string;
           created_at?: string;
-          email?: string | null;
+          email?: string;
           id?: string;
-          name?: string | null;
-          password_hash?: string | null;
-          phone?: string | null;
-          surname?: string | null;
+          name?: string;
+          password_hash?: string;
+          phone?: string;
+          surname?: string;
         };
         Relationships: [];
       };
