@@ -11,12 +11,9 @@ const FormSchema = z.object({
   password: z.string(),
 });
 
-const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRES_IN = "1h";
 
 async function signUp(formData: FormData) {
-  if (!JWT_SECRET) throw new Error("Секретный ключ не определён");
-
   const validatedFields = FormSchema.safeParse({
     name: formData.get("name"),
     surname: formData.get("surname"),
@@ -29,7 +26,7 @@ async function signUp(formData: FormData) {
 
   const hashPassword = await bcrypt.hash(password, 10);
 
-  const { data, error } = await db
+  const { data: user, error } = await db
     .from("users")
     .insert({
       name,
@@ -45,20 +42,21 @@ async function signUp(formData: FormData) {
 
   const token = jwt.sign(
     {
-      id: data.id,
-      email: data.email,
-      name: data.name,
+      id: user.id,
+      email: user.email,
     },
-    JWT_SECRET,
+    process.env.JWT_SECRET!,
     { expiresIn: JWT_EXPIRES_IN },
   );
 
   return {
     user: {
-      id: data.id,
-      email: data.email,
-      name: data.name,
-      surname: data.surname,
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      surname: user.surname,
+      phone: user.phone,
+      avatar_url: user.avatar_url,
     },
     token,
   };

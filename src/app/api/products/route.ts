@@ -11,9 +11,9 @@ const FormSchema = z.object({
 
 async function listProducts() {
   const { data, error } = await db.from("products").select(`
-		title, description, price,
-		categories!inner(name),
-		users!inner(name, surname, avatar_url)
+		id, title, description, price, image_url,
+		categories!inner(id, name),
+		users!inner(id, name, surname, avatar_url)
 	`);
 
   if (error) {
@@ -48,9 +48,9 @@ async function createProduct(formData: FormData) {
       user_id: userId,
     },
   ]).select(`
-		title, description, price,
-		categories!inner(name),
-		users!inner(name, surname, avatar_url)
+		id, title, description, price, image_url,
+		categories!inner(id, name),
+		users!inner(id, name, surname, avatar_url)
 	`);
 
   if (error) {

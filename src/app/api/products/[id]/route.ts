@@ -12,11 +12,12 @@ async function getProduct(id: string) {
   const { data, error } = await db
     .from("products")
     .select(
-      `title, description, price,
+      `title, description, price, image_url,
         categories!inner(name),
         users!inner(name, surname, avatar_url)`,
     )
-    .eq("id", id);
+    .eq("id", id)
+    .single();
   if (error) {
     console.error("Database error:", error);
     throw new Error("Failed to fetch products");
@@ -48,7 +49,7 @@ async function updateProduct(id: string, formData: FormData) {
       category_id: categoryId,
     })
     .eq("id", id).select(`
-		title, description, price,
+		title, description, price, image_url,
 		categories!inner(name),
 		users!inner(name, surname, avatar_url)
 	`);
