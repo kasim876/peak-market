@@ -4,7 +4,5 @@ export default interface User {
   surname: string;
   email: string;
   phone: string;
-  password_hash: string;
   avatar_url: string | null;
-  created_at: string;
 }

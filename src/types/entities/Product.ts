@@ -1,7 +1,11 @@
+import Category from "./Category";
+import User from "./User";
+
 export default interface Product {
   id: string;
-  user_id: string; // satisfy User.id
-  category_id: string; // satisfy Category.id
+  users: User;
+  categories: Category;
+  image_url: string;
   title: string;
   description: string;
   price: number;
