@@ -1,7 +1,13 @@
+import ProductCardWrapper from "@/components/ui/cards";
+
 export default function Home() {
   return (
-    <main className="flex flex-col gap-[32px] items-center px-2 py-5">
-      <h1>PeakStore</h1>
+    <main className="flex flex-col items-center gap-[32px]">
+      <h1 className="sr-only">Peak Store</h1>
+      <section className="container">
+        <h2 className="font-bold text-3xl my-4">Актуальные товары</h2>
+        <ProductCardWrapper />
+      </section>
     </main>
   );
 }
