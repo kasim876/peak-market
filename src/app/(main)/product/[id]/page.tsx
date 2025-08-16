@@ -13,7 +13,7 @@ export default function Products() {
   const { data: product, isLoading } = useGetProductQuery(id);
   const { data: user } = useAuthQuery();
 
-  if (isLoading) return <div>Загрузка...</div>;
+  if (isLoading) return <div className="p-4 container">Загрузка...</div>;
 
   if (!product) return <div>Не найден товар</div>;
 
@@ -26,7 +26,7 @@ export default function Products() {
           src={`/${image_url}`}
           alt={`Фото товара: ${title}`}
           width={500}
-          height={500}
+          height={200}
           className="rounded-lg"
         />
         <h1 className="text-4xl font-bold text-blue-800">{title}</h1>

@@ -1,4 +1,4 @@
-import ProductCardWrapper from "@/components/ui/cards";
+import ProductCardWrapper from "@/components/cards";
 
 export default function Home() {
   return (
