@@ -29,7 +29,10 @@ export default function Header() {
           <button onClick={handleLogout}>Выйти</button>
         </div>
       ) : (
-        <Link href={`/login?redirect=${encodeURIComponent(pathname || "/")}`}>Войти</Link>
+        <div className="flex gap-5">
+          <Link href={`/login?redirect=${encodeURIComponent(pathname || "/")}`}>Войти</Link>
+          <Link href={`/register?redirect=${encodeURIComponent(pathname || "/")}`}>Зарегестрироваться</Link>
+        </div>
       )}
     </header>
   );
