@@ -38,7 +38,7 @@ async function signUp(formData: FormData) {
     .select(`*`)
     .single();
 
-  if (error) throw error;
+  if (error) throw new Error("Пользователь с таким email и/или телефоном зарегестрирован.");
 
   const token = jwt.sign(
     {
@@ -67,13 +67,20 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const result = await signUp(formData);
 
-    return Response.json(result, {
+    return Response.json(result.user, {
       status: 200,
       headers: {
         "Set-Cookie": `token=${result.token}; Path=/; HttpOnly; SameSite=Strict`,
       },
     });
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    return Response.json(
+      {
+        message: error instanceof Error ? error.message : "Неизвестная ошибка",
+      },
+      {
+        status: 500,
+      },
+    );
   }
 }
